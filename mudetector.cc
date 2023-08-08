@@ -1,6 +1,5 @@
 #include "mudetector.hh"
 
-#include "murun.hh"
 
 
 
@@ -8,34 +7,12 @@ MySensitiveDetector::MySensitiveDetector(G4String name) : G4VSensitiveDetector(n
 {}
 
 MySensitiveDetector::~MySensitiveDetector()
-{
-    // UpdateTotalEnergyScint1(totalEnergyScint1);
-    // UpdateTotalEnergyScint2(totalEnergyScint2);
-}
-
-// void MySensitiveDetector::UpdateTotalEnergyScint1(G4double energy1)
-// {
-//     totalEnergyScint1 = energy1;
-//     G4cout << "dsccs "<< totalEnergyScint1  << G4endl;
-// }
-
-// void MySensitiveDetector::UpdateTotalEnergyScint2(G4double energy2)
-// {
-//     totalEnergyScint2 = energy2;
-// }
+{}
 
 
-// // Definition of SetTotalEnergyScint1 function
-// void MySensitiveDetector::SetTotalEnergyScint1(G4double totalEnergyScint1) {
-//     this->totalEnergyScint1 = totalEnergyScint1;
-// }
 
 G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROhist)
 {
-
-
-    // UpdateTotalEnergyScint1(totalEnergyScint1);
-    // UpdateTotalEnergyScint2(totalEnergyScint2);
 
 
     G4Track *track = aStep->GetTrack();
@@ -76,60 +53,26 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROhis
 
 
     if (volName == "physScintillator1") {
-        // energy1 = energy;
         totalEnergyScint1 += energy;
-        // energy1 = totalEnergyScint1;
-        
         G4cout<<"totenergy1: " <<  MySensitiveDetector::getEnergy1() << G4endl;
         G4cout << "totenergy2: " << MySensitiveDetector::getEnergy2() << G4endl;
 
-
     } 
     else if (volName == "physScintillator2") {
-        // energy2 = energy;
        totalEnergyScint2 += energy;
-    //    energy2 = totalEnergyScint2;
        G4cout<<"totenergy2: " <<  MySensitiveDetector::getEnergy2() << G4endl;
        G4cout << "totenergy1: " << MySensitiveDetector::getEnergy1() << G4endl;
 
-
     }
-
-
-    // G4double edep1 = mySensitiveDetector1->energy1;
-    // G4double edep2 = mySensitiveDetector2->energy2;
-
-    //G4cout<<"totenergy1: " <<  totalEnergyScint1 << G4endl;
-    //G4cout<<"totenergy2: " <<  totalEnergyScint2 << G4endl;
-
-//void MySensitiveDetector::SetTotalEnergyScint1(G4double energy) {
-//    totalEnergyScint1 += energy;
-//}
-
-
-    // MySensitiveDetector::setEnergy(totalEnergyScint1);
-    // G4cout<<"totenergy1: " <<  edep1 << G4endl;
-    // G4cout<<"totenergy2: " <<  edep2 << G4endl;
-    // G4cout<<"totenergy1_setter: " <<  MySensitiveDetector::getEnergy1() << G4endl;
-    // G4cout<<"totenergy2_setter: " <<  MySensitiveDetector::getEnergy2() << G4endl;
-
-    // UpdateTotalEnergyScint1(totalEnergyScint1);
-    // UpdateTotalEnergyScint2(totalEnergyScint2);
-
-
-    // G4cout << "Step Lenght: " << aStep->GetTrack()->GetStepLength() << G4endl;
-
-    // this->SetTotalEnergyScint1(totalEnergyScint1);
-
     
     
-    G4AnalysisManager *man = G4AnalysisManager::Instance();
+    // G4AnalysisManager *man = G4AnalysisManager::Instance();
 
-    man->FillNtupleIColumn(0, evt);
-    man->FillNtupleDColumn(1, posDetector[0]);
-    man->FillNtupleDColumn(2, posDetector[1]);
-    man->FillNtupleDColumn(3, posDetector[2]);
-    man->FillNtupleDColumn(4, energy);
+    // man->FillNtupleIColumn(0, evt);
+    // man->FillNtupleDColumn(1, posDetector[0]);
+    // man->FillNtupleDColumn(2, posDetector[1]);
+    // man->FillNtupleDColumn(3, posDetector[2]);
+    // man->FillNtupleDColumn(4, energy);
     // man->FillNtupleDColumn(5, totalEnergyScint1);
     // man->FillNtupleDColumn(6, totalEnergyScint2);
     // man->AddNtupleRow(0);

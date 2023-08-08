@@ -87,4 +87,9 @@ void MyDetectorConstruction::ConstructSDandField()
     mySensitiveDetector = new MySensitiveDetector("SensitiveDetector");
     logicScintillator1->SetSensitiveDetector(mySensitiveDetector);
     logicScintillator2->SetSensitiveDetector(mySensitiveDetector);
+
+    G4SDManager* sdManager = G4SDManager::GetSDMpointer();
+    sdManager->AddNewDetector(mySensitiveDetector);
+
+
 }

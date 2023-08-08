@@ -8,6 +8,7 @@
 #include "G4PVPlacement.hh"
 #include "G4NistManager.hh"
 #include "G4SystemOfUnits.hh"
+#include "G4SDManager.hh"
 
 #include "mudetector.hh"
 
